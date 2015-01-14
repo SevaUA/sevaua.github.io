@@ -4,7 +4,7 @@
   <title><![CDATA[Blamlam Blog]]></title>
   <link href="http://puliaiev.com/atom.xml" rel="self"/>
   <link href="http://puliaiev.com/"/>
-  <updated>2015-01-12T21:21:30+02:00</updated>
+  <updated>2015-01-14T23:09:12+02:00</updated>
   <id>http://puliaiev.com/</id>
   <author>
     <name><![CDATA[Sergii Puliaiev]]></name>
@@ -100,6 +100,17 @@ ssh_args = -o ForwardAgent=yes
 </code></pre>
 
 <p>В следующей статье планирую написать детальней о модуле digital_ocean.</p>
+
+<p><em>Дополнение:</em> в hosts файле можно писать домены:</p>
+
+<pre><code>[t2v]
+tw2vk.pp.ua
+</code></pre>
+
+<p><em>Дополнение:</em> для проверки доступа на сервер можно выполнить:</p>
+
+<pre><code>ansible t2v -m ping -u root
+</code></pre>
 ]]></content>
   </entry>
   

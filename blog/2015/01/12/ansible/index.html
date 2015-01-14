@@ -182,6 +182,17 @@ ssh_args = -o ForwardAgent=yes
 </code></pre>
 
 <p>В следующей статье планирую написать детальней о модуле digital_ocean.</p>
+
+<p><em>Дополнение:</em> в hosts файле можно писать домены:</p>
+
+<pre><code>[t2v]
+tw2vk.pp.ua
+</code></pre>
+
+<p><em>Дополнение:</em> для проверки доступа на сервер можно выполнить:</p>
+
+<pre><code>ansible t2v -m ping -u root
+</code></pre>
 </div>
 
 
