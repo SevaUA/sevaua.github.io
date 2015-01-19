@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Blamlam Blog]]></title>
-  <link href="http://puliaiev.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Dev | Blamlam Blog]]></title>
+  <link href="http://puliaiev.com/blog/categories/dev/atom.xml" rel="self"/>
   <link href="http://puliaiev.com/"/>
   <updated>2015-01-19T22:30:17+02:00</updated>
   <id>http://puliaiev.com/</id>
@@ -12,33 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Как уснуть?]]></title>
-    <link href="http://puliaiev.com/blog/2015/01/19/sleep/"/>
-    <updated>2015-01-19T14:43:18+02:00</updated>
-    <id>http://puliaiev.com/blog/2015/01/19/sleep</id>
-    <content type="html"><![CDATA[<p>Часто не можете уснуть? Вот что может пригодиться:</p>
-
-<blockquote><p>На счет раз вдыхаем, на счет два - выдыхаем и думать только о дыхании и счете.</p></blockquote>
-
-<p><em>Патрик Джейн, Менталист, сезон 4, серия 12</em></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fs_usage]]></title>
-    <link href="http://puliaiev.com/blog/2015/01/19/fs-usage/"/>
-    <updated>2015-01-19T14:42:28+02:00</updated>
-    <id>http://puliaiev.com/blog/2015/01/19/fs-usage</id>
-    <content type="html"><![CDATA[<p>Если Вам вдруг нужно узнать с какими файлами работает некая прога, на MacOS можно сделать так:</p>
-
-<pre><code>sudo fs_usage -w | grep ApplicationName | grep open
-</code></pre>
-
-<p>Категория заметок, в блоге, открыта)</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ansible]]></title>
@@ -93,24 +66,24 @@ ssh_args = -o ForwardAgent=yes
 134.100.60.1
 </code></pre>
 
-<p>И самое главное, плейбук (yaml файл), в котором мы пишем что хотим сделать на удаленной машине. Пример:</p>
-
-<pre><code>---
-- hosts: t2v
-  user: root
-  sudo: yes
-  vars:
-    proj_dir: ../../../
-    proj_name: twitterexporter_1
-    dest_dir: /app/
-  tasks:
-  - name: Apt
-    apt: name=python-pip state=present
-  - name: Prepare vars
-    include_vars: ../.env
-  - name: sync files
-    synchronize: src={{proj_dir}}{{proj_name}} dest={{dest_dir}}
-</code></pre>
+<p>И самое главное, плейбук (yaml файл), в котором мы пишем что хотим сделать на удаленной машине. Пример:
+    
+    &mdash;
+    - hosts: t2v
+      user: root
+      sudo: yes
+      vars:
+        proj_dir: ../../../
+        proj_name: twitterexporter_1
+        dest_dir: /app/
+      tasks:
+      - name: Apt
+        apt: name=python-pip state=present
+      - name: Prepare vars
+        include_vars: ../.env
+      - name: sync files
+        synchronize: src={{proj_dir}}{{proj_name}} dest={{dest_dir}}
+    </p>
 
 <p>В первой строке сказали с какими машинами работать, дальше задали переменные, далее пошел раздел tasks, с заданиями. Установить, если не установленно python-pip, переменные окружения задать и синхронизировать папки (не явно работает с rsync). У меня были проблемы с rsync он пробовал подключиться к localhost по ssh. Чтоб это побороть я прописывал как нужно подключаться к localhost. Недавно все переписывал, убрал эту настройку, все заработало и так, наверное Ansible team все пофиксили.</p>
 
@@ -138,36 +111,6 @@ tw2vk.pp.ua
 
 <pre><code>ansible t2v -m ping -u root
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Пишите домашние проекты!]]></title>
-    <link href="http://puliaiev.com/blog/2015/01/10/pishitie-domashniie-proiekty/"/>
-    <updated>2015-01-10T11:00:34+02:00</updated>
-    <id>http://puliaiev.com/blog/2015/01/10/pishitie-domashniie-proiekty</id>
-    <content type="html"><![CDATA[<p>Добрый день,</p>
-
-<p>Меня зовут Сергей и я буду писать блог. На самом деле это моя вторая попытка (<a href="http://sevaua.blogspot.com/">первая</a>). Блог будет о программировании, авто, покере, бильярде, фильмах, сериалах и прочих вещах.</p>
-
-<p>Теперь по теме. Мне кажется что писать домашние проекты очень полезно. Дальше причины.</p>
-
-<!--more-->
-
-
-<ul>
-<li><p>Изучение новых технологий. На работе, обычно, у тебя есть задача, ее нужно делать, технологии уже выбраны, бери, делай. На своем проекте можно выбирать самому, услышал про Redis в своем любимом подкасте, бах и запилил. И все равно что это был everhead на твоем маленьком проекте.</p></li>
-<li><p>Собеседования. О своем проекте можно рассказать на следующем собеседовании. Обычно о работе говорить мало что можно (NDA). А вот о своем - болтай что угодно.</p></li>
-<li><p>Надежда. Пишешь и думаешь - если выстрелит - сделаю бизнес, буду зарабатывать на нем деньги. У меня пока не получилось, ну кто знает.</p></li>
-<li><p>Опыт. Читать статьи очень хорошо, но опробовав на практике можно найти много подводных камней. И вообще <a href="http://macode.ru/">ссылка</a>.</p></li>
-</ul>
-
-
-<p>Все это была прелюдия. Основная цель познакомить Вас с моим проектом - <a href="http://tw2vk.pp.ua">tw2vk</a>. Это сервис для мониторинга твиттера и пересылки твоих постов в ВК.</p>
-
-<p>Позже планирую написать пару технических статей о сервисе, о технологиях, которые использовал, когда писал его.</p>
-
-<p>Как говорит RWJ - подписывайтесь, ставьте палец вверх!</p>
 ]]></content>
   </entry>
   
