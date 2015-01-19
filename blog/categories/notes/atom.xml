@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Notes | Blamlam Blog]]></title>
+  <link href="http://puliaiev.com/blog/categories/notes/atom.xml" rel="self"/>
+  <link href="http://puliaiev.com/"/>
+  <updated>2015-01-19T15:29:14+02:00</updated>
+  <id>http://puliaiev.com/</id>
+  <author>
+    <name><![CDATA[Sergii Puliaiev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Как уснуть?]]></title>
+    <link href="http://puliaiev.com/blog/2015/01/19/sleep/"/>
+    <updated>2015-01-19T14:43:18+02:00</updated>
+    <id>http://puliaiev.com/blog/2015/01/19/sleep</id>
+    <content type="html"><![CDATA[<p>Часто не можете уснуть? Вот что может пригодиться:</p>
+
+<blockquote><p>На счет раз вдыхаем, на счет два - выдыхаем и думать только о дыхании и счете.</p></blockquote>
+
+<p><em>Патрик Джейн, Менталист, сезон 4, серия 12</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fs_usage]]></title>
+    <link href="http://puliaiev.com/blog/2015/01/19/fs-usage/"/>
+    <updated>2015-01-19T14:42:28+02:00</updated>
+    <id>http://puliaiev.com/blog/2015/01/19/fs-usage</id>
+    <content type="html"><![CDATA[<p>Если Вам вдруг нужно узнать с какими файлами работает некая прога, на MacOS можно сделать так:</p>
+
+<pre><code>sudo fs_usage -w | grep ApplicationName | grep open
+</code></pre>
+
+<p>Категория заметок, в блоге, открыта)</p>
+]]></content>
+  </entry>
+  
+</feed>
