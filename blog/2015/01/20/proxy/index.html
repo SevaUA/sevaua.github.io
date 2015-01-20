@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>HTTP(s) Proxy - Blamlam Blog</title>
+  <meta name="author" content="Sergii Puliaiev">
+
+  
+  <meta name="description" content="Если у Вас в университете или на работе злые дяди ограничивают доступ к некоторым сайтам то эта статья для Вас. Будем в пару кликов поднимать http &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://puliaiev.com/blog/2015/01/20/proxy">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blamlam Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-58432253-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blamlam Blog</a></h1>
+  
+    <h2>Персональный блог Пуляева Сергея</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="puliaiev.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Поиск"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Блог</a></li>
+  <li><a href="/blog/archives">Архив</a></li>
+  <li><a href="/about/">Контакты</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">HTTP(s) Proxy</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+20-01-2015
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://puliaiev.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Если у Вас в университете или на работе злые дяди ограничивают доступ к некоторым сайтам то эта статья для Вас. Будем в пару кликов поднимать http proxy сервер.</p>
+
+<p>Далее опишу два способа, один простой, второй с использованием <a href="https://www.docker.com/">docker</a>.</p>
+
+<!-- more -->
+
+
+<p><strong>Общая часть.</strong> Регистрируемся на хостинге VPS. Создаем машину. Подключаемся к ней. Я использую <a href="https://www.digitalocean.com/?refcode=b72f06de4bb7">digitalocean</a> и всем рекомендую. Дальше немного детальней, как это сделать на digitalocean.</p>
+
+<p>После того как Вы вошли в систему, жмем <strong>Create Droplet</strong> (Droplet - так называют виртуальные машины, с выделенным IP адресом в этом облачном хостинге). Вводим имя для сервера, я просто написал proxy. Выбираем размер, берем минимальный 5 дол. в месяц (если вы по реферальной моей ссылочке выше, Вам 10 дол. в подарок :) ). Регион любой. <strong>Available Settings</strong> оставляем без галочек. <strong>Select Image</strong> - заходим на вкладку <strong>Applications</strong> там берем <strong>node</strong> для простого или <strong>docker</strong> образ для сложного пути. Выбираем ключи для доступа, если у Вас нет, не волнуйтесь, логин и пароль к созданной машинке будет выслан на почту. Для завершения жмем большую зеленую кнопку внизу. Через 60 секунд виртуалка будет создана и будет ожидать нашего подключения. Запомните IP адрес машины, он будет вверху, после названия дроплета.</p>
+
+<p><strong>Простой способ.</strong> Подключаемся к VPS, ставим нужный пакет:</p>
+
+<pre><code>ssh root@104.236.83.6
+npm install -g proxy
+</code></pre>
+
+<p>Ключ -g говорит о том что бинарники пакета будут доступны глобально. Мы используем пакет для NodeJS под названием <a href="https://www.npmjs.com/package/proxy">proxy</a>. Как по мне он отлично подходит для нашей задачи и еще он очень прост в использовании. Для запуска прокси сервера выполняем:</p>
+
+<pre><code>proxy &amp;
+</code></pre>
+
+<p>Если все прошло успешно, увидим надпись:</p>
+
+<pre><code>HTTP(s) proxy server listening on port 3128
+</code></pre>
+
+<p>Отключаемся от виртуалки. И можно смело настраивать систему на этот порт, IP нужно указать тот что у виртуалки, которую создавали выше.</p>
+
+<p><strong>Способ с Docker.</strong> Подключаемся так же как в первом случае. Докер у Вас должен быть установлен, так как для этого случая мы выбрали образ системы с предустановленным Docker. Выполняем команду:</p>
+
+<pre><code>docker run -it —-name proxycontainer node:0.10 bash
+</code></pre>
+
+<p>Попадаем внутрь контейнера. Там делаем:</p>
+
+<pre><code>npm install -g proxy
+</code></pre>
+
+<p>Покидаем контейнер:</p>
+
+<pre><code>exit
+</code></pre>
+
+<p>Сохраняем состояние контейнера в локальный образ:</p>
+
+<pre><code>docker commit proxycontainer proxy
+</code></pre>
+
+<p>Запускаем наш прокси из образа:</p>
+
+<pre><code>docker run -p 3128:3128 --restart="always" -d proxy proxy
+</code></pre>
+
+<p>Готово! Как бонус мы получили фишку от второго способа - перезапуск прокси, если что-то пойдет не так.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Sergii Puliaiev</span></span>
+
+      
+
+
+
+
+20-01-2015
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dev/'>dev</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://puliaiev.com/blog/2015/01/20/proxy/" data-via="sevaua" data-counturl="http://puliaiev.com/blog/2015/01/20/proxy/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/19/sleep/" title="Previous Post: Как уснуть?">&laquo; Как уснуть?</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Sergii Puliaiev -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blamlamblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://puliaiev.com/blog/2015/01/20/proxy/';
+        var disqus_url = 'http://puliaiev.com/blog/2015/01/20/proxy/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
