@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Dev | Blamlam Blog]]></title>
   <link href="http://puliaiev.com/blog/categories/dev/atom.xml" rel="self"/>
   <link href="http://puliaiev.com/"/>
-  <updated>2015-03-09T20:36:05+02:00</updated>
+  <updated>2015-03-17T21:36:08+02:00</updated>
   <id>http://puliaiev.com/</id>
   <author>
     <name><![CDATA[Sergii Puliaiev]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Первый Open Source проект]]></title>
+    <link href="http://puliaiev.com/blog/2015/03/17/first-open-source-project/"/>
+    <updated>2015-03-17T21:15:59+02:00</updated>
+    <id>http://puliaiev.com/blog/2015/03/17/first-open-source-project</id>
+    <content type="html"><![CDATA[<p>Наконец то, мой первый опенсорс проект. Если кто желает, присоединяйтесь!</p>
+
+<!--more-->
+
+
+<p>Суть проекта - расширить функционал сайта <a href="http://auto.ria.ua/">http://auto.ria.ua/</a> за счет плагина к браузеру Chrome.</p>
+
+<p>Сейчас реализована функция подсчета средней цены на автомобили на текущей странице.
+Идеи нового функционала пишите в комментариях!</p>
+
+<p>Проект хостится на GitHub: <a href="https://github.com/SevaUA/autoriaua">https://github.com/SevaUA/autoriaua</a></p>
+
+<p>Версию 0.1 можно скачать тут: <a href="https://dl.dropboxusercontent.com/u/8984423/autoriaua_v0_1.crx">https://dl.dropboxusercontent.com/u/8984423/autoriaua_v0_1.crx</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ansible]]></title>
