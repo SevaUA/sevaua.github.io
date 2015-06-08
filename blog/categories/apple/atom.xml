@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tech | Blamlam Blog]]></title>
-  <link href="http://puliaiev.com/blog/categories/tech/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Apple | Blamlam Blog]]></title>
+  <link href="http://puliaiev.com/blog/categories/apple/atom.xml" rel="self"/>
   <link href="http://puliaiev.com/"/>
   <updated>2015-06-08T22:54:45+03:00</updated>
   <id>http://puliaiev.com/</id>
@@ -133,54 +133,6 @@
 <li>потом 10 дол. в месяц</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2015 Apple Event в двух словах]]></title>
-    <link href="http://puliaiev.com/blog/2015/03/09/2015-apple-event-in-two-words/"/>
-    <updated>2015-03-09T19:21:47+02:00</updated>
-    <id>http://puliaiev.com/blog/2015/03/09/2015-apple-event-in-two-words</id>
-    <content type="html"><![CDATA[<p>Что новенького на 2015 Apple Event:</p>
-
-<!--more-->
-
-
-<ul>
-<li><p>Apple TV за 70 дол.</p></li>
-<li><p>ResearchKit фреймворк связанный со здоровьем и iPhone (open source, что не похоже на Apple).</p></li>
-<li><p>Новенький MacBook</p>
-
-<ul>
-<li>легче всех</li>
-<li>тоньше всех</li>
-<li>новая клавиатура</li>
-<li>12 дюймовая ретина</li>
-<li>новый трэкпад (обратной связь, 4 нажимающиеся части, глубина нажатия)</li>
-<li>в новом маке нет куллеров</li>
-<li>держит батарейку целый день</li>
-<li>оставили один разьем (USB-C)</li>
-<li>доступен в разных цветах</li>
-<li>8 гиг. памяти</li>
-<li>250 гиг ssd</li>
-<li>1300 дол.</li>
-</ul>
-</li>
-<li><p>Часы</p>
-
-<ul>
-<li>миллион разных настроек отображение времени</li>
-<li>можно читать на них смс, можно получать голосовые вызовы, можно читать имейлы</li>
-<li>можно пересылать нарисованные картинки</li>
-<li>можно отслеживать свою активность</li>
-<li>батарея на один день</li>
-<li>часы модификации спорт 350 дол.</li>
-<li>стандартная модификация от 550 до 1040 дол.</li>
-<li>пред заказ с 10-го Апреля</li>
 </ul>
 </li>
 </ul>
